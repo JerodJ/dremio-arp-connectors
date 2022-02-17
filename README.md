@@ -68,18 +68,14 @@ The ARP file is broken down into several sections:
 
 If an operation or function is not specified in the ARP file, then Dremio will handle the operation itself. Any operations which are indicated as supported but need to be stacked on operations which are not will not be pushed down to the SQL query.
 
-## Build the ARP Connector
+## Build and Installation
 
-Run the following command in the root directory for the Connector (the connector that contains the *pom.xml* file):
+1. Run the following command in the root directory for the Connector (the connector that contains the *pom.xml* file):  
+`mvn clean install`
+3. Place the built JAR file (from the *target* directory) in the /jars/ directory of your Dremio installation. For example:  
+`docker cp PATH\TO\dremio-classname-plugin-20.0.0.jar dremio_image_name:/opt/dremio/jars/`
+3. Download and install the [<<Service/App>> JDBC Driver from CData](https://www.cdata.com/jdbc/download/)* and copy the JAR file to the /jars/3rdparty/ directory of your Dremio installation. For example
+`docker cp PATH\TO\cdata.jdbc.classname.jar dremio_image_name:/opt/dremio/jars/3rdparty/`
+4. Restart Dremio
 
-    mvn clean install
-    
-## Copy the ARP Connector & JDBC Driver JAR Files
-
-Copy the ARP Connector JAR file the /jars/ directory of your Dremio installation:
-
-    docker cp PATH\TO\dremio-classname-plugin-20.0.0.jar dremio_image_name:/opt/dremio/jars/
-
-Copy the JDBC Driver to the /jars/3rdparty/ directory of your Dremio installation:
-
-    docker cp PATH\TO\cdata.jdbc.classname.jar dremio_image_name:/opt/dremio/jars/3rdparty/
+**Note: you will need a trial or paid license of the CData JDBC Driver to use the Driver in Dremio.*
