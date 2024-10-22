@@ -14,6 +14,7 @@ Rename the following files:
 
 Edit the contents of the files (*pom.xml*, *ClassNameConf.java*, *classname-arp.yaml*, and *classname-layout.json*):
 
+* Find {VERSION} in pom.xml and replace it with your Dremio version, e.g. 25.1.1-202409260159070462-716c0676
 * Find {Datasource} and replace it with ClassName (example: *AmazonDynamoDB*)
 * Find {DatasourceLower} and replace it with classname (example: *amazondynamodb*)
 
